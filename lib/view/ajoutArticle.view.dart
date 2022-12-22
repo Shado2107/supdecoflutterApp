@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 
 import 'package:flutter/material.dart';
@@ -13,6 +12,8 @@ class AjoutArticle extends StatelessWidget{
   TextEditingController typeController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController idController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController dateFinController =  TextEditingController();
 
   dynamic article = [];
 
@@ -39,9 +40,7 @@ class AjoutArticle extends StatelessWidget{
                 controller: typeController,
                 decoration: InputDecoration(
                   labelText: 'Type',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0))
-                  )
+
                 ),
                 validator: (value) {
                   if(value!.isEmpty){
@@ -59,9 +58,7 @@ class AjoutArticle extends StatelessWidget{
                 controller: descriptionController,
                 decoration: InputDecoration(
                   labelText: 'Description',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0))
-                  )
+
                 ),
                 validator: (value){
                   if(value!.isEmpty){
@@ -71,6 +68,23 @@ class AjoutArticle extends StatelessWidget{
                 },
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 16.0, left: 16.0, right: 16.0, bottom: 8.0),
+              child: TextFormField(
+                controller: dateController,
+                decoration: InputDecoration(
+                    labelText: 'Prenom',
+                    ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Champs obligatoire';
+                  }
+                  return null;
+                },
+              ),
+            ),
+
             SizedBox(height: 8.0),
             Center(
               child: ElevatedButton(
